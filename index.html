@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrusel USS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f9f9f9;
+    }
+
+    .carousel {
+      position: relative;
+      max-width: 960px;
+      margin: 40px auto;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 400%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .carousel-buttons button {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      color: #0f2b41;
+      font-size: 2rem;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .carousel-dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .carousel-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: #0f2b41;
+    }
+  </style>
+</head>
+<body>
+
+<div class="carousel">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="1"></div>
+    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="2"></div>
+    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="3"></div>
+    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="4"></div>
+  </div>
+  <div class="carousel-buttons">
+    <button onclick="moveSlide(-1)">❮</button>
+    <button onclick="moveSlide(1)">❯</button>
+  </div>
+</div>
+
+<div class="carousel-dots" id="carouselDots">
+  <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+  <span class="carousel-dot" onclick="goToSlide(1)"></span>
+  <span class="carousel-dot" onclick="goToSlide(2)"></span>
+  <span class="carousel-dot" onclick="goToSlide(3)"></span>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const track = document.getElementById('carouselTrack');
+  const dots = document.getElementById('carouselDots').children;
+  const totalSlides = dots.length;
+
+  function updateDots() {
+    for (let i = 0; i < totalSlides; i++) {
+      dots[i].classList.toggle('active', i === currentSlide);
+    }
+  }
+
+  function moveSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+  }
+</script>
+
+</body>
+</html>
