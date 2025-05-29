@@ -68,8 +68,13 @@
       stroke: white;
       width: 32px;
       height: 32px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
+    
+    .carousel-buttons button:hover svg {
+      transform: scale(1.2);
+      opacity: 0.85;
+    }
 
     .carousel-dots {
       text-align: center;
