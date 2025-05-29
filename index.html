@@ -44,23 +44,22 @@
 
     .carousel-buttons {
       position: absolute;
-      top: 50%;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
       display: flex;
       justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 20px;
-      box-sizing: border-box;
+      align-items: center;
+      pointer-events: none; /* deja clickeables solo los botones */
     }
-
-     .carousel-buttons button {
-      all: unset; /* resetea estilos heredados del navegador */
+    
+    .carousel-buttons button {
+      all: unset;
+      pointer-events: all;
       cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
       z-index: 2;
-      padding: 8px;
+      padding: 12px;
     }
     
     .carousel-buttons button svg {
@@ -94,6 +93,7 @@
     .carousel-dot.active {
       background: #0f2b41;
     }
+    
   </style>
 </head>
 <body>
