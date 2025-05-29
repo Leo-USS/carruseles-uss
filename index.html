@@ -12,14 +12,18 @@
       font-family: sans-serif;
       background: #f9f9f9;
     }
-
+  
     .carousel {
       position: relative;
-      aspect-ratio: 16/9;
+      width: 100%;
+      max-width: 960px;
       margin: 40px auto;
+      aspect-ratio: 16/9;
       overflow: hidden;
       border-radius: 16px;
+      background: #000; /* evita parpadeo mientras carga imagen */
     }
+
 
     .carousel-track {
       display: flex;
@@ -85,22 +89,39 @@
 
 <div class="carousel">
   <div class="carousel-track" id="carouselTrack">
-    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="1"></div>
-    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="2"></div>
-    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="3"></div>
-    <div class="carousel-slide"><img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="4"></div>
+    <div class="carousel-slide">
+      <img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="1">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="2">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://cdn.uss.cl/content/uploads/2025/05/28152034/Documental-volcan-copahue-uss-nota-1.jpg" alt="3">
+    </div>
+    <div class="carousel-slide">
+      <img src="https://cdn.uss.cl/content/uploads/2025/05/28153157/Presentacion-Documental-volcan-copahue-uss-nota-1.jpg" alt="4">
+    </div>
   </div>
+
   <div class="carousel-buttons">
-    <button onclick="moveSlide(-1)"> <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-    <path d="M15 18l-6-6 6-6" stroke="#0f2b41" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+    <!-- Botón izquierda -->
+    <button onclick="moveSlide(-1)">
+      <<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-chevron-left-icon lucide-circle-chevron-left">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="m14 16-4-4 4-4"/>
+      </svg>
     </button>
-    <button onclick="moveSlide(1)"> <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-    <path d="M15 18l-6-6 6-6" stroke="#0f2b41" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+
+    <!-- Botón derecha -->
+    <button onclick="moveSlide(1)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-chevron-right-icon lucide-circle-chevron-right">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="m10 8 4 4-4 4"/>
+      </svg>
     </button>
   </div>
 </div>
+
 
 <div class="carousel-dots" id="carouselDots">
   <span class="carousel-dot active" onclick="goToSlide(0)"></span>
