@@ -53,15 +53,23 @@
       box-sizing: border-box;
     }
 
-    .carousel-buttons button {
-      background: rgba(255, 255, 255, 0.8);
-      border: none;
-      color: #0f2b41;
-      font-size: 2rem;
-      padding: 8px 12px;
-      border-radius: 50%;
+     .carousel-buttons button {
+      all: unset; /* resetea estilos heredados del navegador */
       cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      padding: 8px;
     }
+    
+    .carousel-buttons button svg {
+      fill: white;
+      stroke: white;
+      width: 32px;
+      height: 32px;
+    }
+
 
     .carousel-dots {
       text-align: center;
